@@ -9,26 +9,26 @@ User.destroy_all
 
 User.create!([{
   email: "mike@aol.com",
-  encrypted_password: "password",
+  password: "password",
   username: "mike"
 },
 {
   email: "logan@aol.com",
-  encrypted_password: "password",
+  password: "password",
   username: "logan"
 },
 {
   email: "kendall@aol.com",
-  encrypted_password: "password",
+  password: "password",
   username: "kendall"
 },
 {
   email: "roman@aol.com",
-  encrypted_password: "password",
+  password: "password",
   username: "roman"
 },
 {
   email: "shiv@aol.com",
-  encrypted_password: "password",
+  password: "password",
   username: "shiv"
 }])
