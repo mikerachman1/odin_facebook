@@ -21,4 +21,14 @@ class User < ApplicationRecord
   def send_invitation(user)
     invitations.create(friend_id: user.id)
   end
+
+  def sent_invite_to
+    sent_invite_ids = Invitation.where(user_id: id, confirmed: false).pluck(:friend_id)
+    User.where(id: sent_invite_ids)
+  end
+
+  def recieved_invite_from
+    recieved_invite_ids = Invitation.where(friend_id: id, confirmed: false).pluck(:user_id)
+    User.where(id: recieved_invite_ids)
+  end
 end

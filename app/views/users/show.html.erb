@@ -3,6 +3,23 @@
 <h3><%= @user.username %>'s friends:</h3>
 <% @user.friends.each do |friend| %>
   <ul>
-    <li>friend</li>
+    <li><%= link_to friend.username, user_path(friend) %></li>
   </ul>
 <% end %>
+
+<h3>Pending friend requests:</h3>
+  <h5>Sent:</h5>
+    <% @user.sent_invite_to.each do |almost_friend| %>
+      <ul>
+        <li><%= link_to almost_friend.username, user_path(almost_friend) %></li>
+      </ul>
+    <% end %>
+  <h5>Recieved:</h5>
+    <% @user.recieved_invite_from.each do |almost_friend| %>
+      <ul>
+        <li><%= link_to almost_friend.username, user_path(almost_friend) %></li>
+      </ul>
+    <% end %>
+
+
+

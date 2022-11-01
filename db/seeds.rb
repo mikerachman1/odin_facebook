@@ -35,7 +35,6 @@ User.create!([{
   username: "shiv"
 }])
 
-# Invitation.create!(user_id: User.find_by(username: "mike").id, friend_id: User.find_by(username: "logan").id, confirmed: true)
 
 Invitation.create!([{
   user_id: User.find_by(username: "mike").id,
