@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Invitation.destroy_all
 User.destroy_all 
+
 
 User.create!([{
   email: "mike@aol.com",
@@ -31,4 +33,27 @@ User.create!([{
   email: "shiv@aol.com",
   password: "password",
   username: "shiv"
+}])
+
+# Invitation.create!(user_id: User.find_by(username: "mike").id, friend_id: User.find_by(username: "logan").id, confirmed: true)
+
+Invitation.create!([{
+  user_id: User.find_by(username: "mike").id,
+  friend_id: User.find_by(username: "logan").id,
+  confirmed: true
+},
+{
+  user_id: User.find_by(username: "mike").id,
+  friend_id: User.find_by(username: "kendall").id,
+  confirmed: false
+},
+{
+  user_id: User.find_by(username: "roman").id,
+  friend_id: User.find_by(username: "mike").id,
+  confirmed: true
+},
+{
+  user_id: User.find_by(username: "shiv").id,
+  friend_id: User.find_by(username: "mike").id,
+  confirmed: false
 }])

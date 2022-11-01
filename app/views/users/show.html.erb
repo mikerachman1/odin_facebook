@@ -1,1 +1,8 @@
 <h1><%= @user.username %>'s page</h1>
+
+<h3><%= @user.username %>'s friends:</h3>
+<% @user.friends.each do |friend| %>
+  <ul>
+    <li>friend</li>
+  </ul>
+<% end %>
