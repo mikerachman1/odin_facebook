@@ -26,6 +26,7 @@
           <li><%= link_to almost_friend.username, user_path(almost_friend) %></li>
           <% invite_id = Invitation.find_invitation(@user.id, almost_friend.id) %>
           <%= link_to 'Accept Friend Request', edit_user_invitation_path(@user, invite_id) %>
+          <%= link_to 'Decline Friend Request', user_invitation_path(@user, invite_id), data: { turbo_method: :delete } %>
         </ul>
       <% end %>
 <% end %>

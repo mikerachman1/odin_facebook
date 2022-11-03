@@ -14,4 +14,11 @@ class InvitationsController < ApplicationController
     flash.alert = 'Friend request Accepted'
     redirect_to user_path(user)
   end
+
+  def destroy
+    user = User.find(params[:user_id])
+    invitation = Invitation.find(params[:id])
+    invitation.destroy
+    redirect_to user_path(user), status: 303
+  end
 end
