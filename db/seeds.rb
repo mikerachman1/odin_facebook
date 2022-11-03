@@ -37,19 +37,19 @@ User.create!([{
 
 
 Invitation.create!([{
-  user_id: User.find_by(username: "mike").id,
-  friend_id: User.find_by(username: "logan").id,
-  confirmed: true
+  user_id: User.find_by(username: "logan").id,
+  friend_id: User.find_by(username: "mike").id,
+  confirmed: false
 },
 {
-  user_id: User.find_by(username: "mike").id,
-  friend_id: User.find_by(username: "kendall").id,
+  user_id: User.find_by(username: "kendall").id,
+  friend_id: User.find_by(username: "mike").id,
   confirmed: false
 },
 {
   user_id: User.find_by(username: "roman").id,
   friend_id: User.find_by(username: "mike").id,
-  confirmed: true
+  confirmed: false
 },
 {
   user_id: User.find_by(username: "shiv").id,
