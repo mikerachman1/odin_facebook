@@ -1,12 +1,9 @@
 class InvitationsController < ApplicationController
-  def create
-    @user = User.find(params[:user_id])
-    @invitation = @user.invitations.create(invitation_params)
-    redirect_to user_path(@user)
-  end
-
-  private
-  def invitation_params
-    params.require(:invitation).permit(:user_id, :friend_id, :confrimed)
+  def new
+    user = current_user
+    new_friend = User.find(params[:user_id])
+    user.send_invitation(new_friend)
+    flash.alert = 'Friend request sent'
+    redirect_to users_path
   end
 end

@@ -3,5 +3,8 @@
 <% @users.each do |user| %>
   <ul>
     <li><%= link_to user.username, user_path(user) %></li>
+    <% if current_user.invitable?(user) && current_user != user %>
+      <%= link_to 'Send Friend Request', new_user_invitation_path(user) %>
+    <% end %>
   </ul>
 <% end %>
