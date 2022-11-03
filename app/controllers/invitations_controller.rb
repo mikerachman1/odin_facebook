@@ -13,6 +13,8 @@ class InvitationsController < ApplicationController
     invitation = Invitation.find(params[:id])
     invitation.update(confirmed: true)
     flash.alert = 'Friend request Accepted'
+    sender = User.find(invitation.user_id)
+    sender.send_notification("#{user.username} accepted your friend request!")
     redirect_to user_path(user)
   end
 
