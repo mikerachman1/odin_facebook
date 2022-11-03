@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :invitations
+    resources :notifications
   end
 end
