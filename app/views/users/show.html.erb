@@ -1,5 +1,10 @@
 <h1><%= @user.username %>'s page</h1>
 
+<% if current_user.invitable?(@user) && current_user != @user %>
+  <%= link_to 'Send Friend Request', new_user_invitation_path(@user) %>
+<% end %>
+
+
 <h3><%= @user.username %>'s friends:</h3>
 <% @user.friends.each do |friend| %>
   <ul>
