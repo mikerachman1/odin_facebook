@@ -36,4 +36,8 @@ class User < ApplicationRecord
     recieved_invite_ids = Invitation.where(friend_id: id, confirmed: false).pluck(:user_id)
     User.where(id: recieved_invite_ids)
   end
+
+  def send_notification(body)
+    notifications.create(body: body)
+  end
 end

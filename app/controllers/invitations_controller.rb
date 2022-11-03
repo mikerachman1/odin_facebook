@@ -4,6 +4,7 @@ class InvitationsController < ApplicationController
     new_friend = User.find(params[:user_id])
     user.send_invitation(new_friend)
     flash.alert = 'Friend request sent'
+    new_friend.send_notification("Friend request recieved from #{user.username}!")
     redirect_to users_path
   end
 
