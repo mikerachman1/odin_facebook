@@ -9,6 +9,10 @@
 <% @user.friends.each do |friend| %>
   <ul>
     <li><%= link_to friend.username, user_path(friend) %></li>
+    <% if current_user == @user %>
+      <% invite_id = Invitation.find_invitation(@user.id, friend.id) %>
+      <%= link_to 'Delete Friend', user_invitation_path(@user, invite_id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <% end %>
   </ul>
 <% end %>
 
