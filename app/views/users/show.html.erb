@@ -4,6 +4,15 @@
   <%= link_to 'Send Friend Request', new_user_invitation_path(@user) %>
 <% end %>
 
+<% if @user == current_user || current_user.friend_with?(@user) %>
+  <h3><%= @user.username %>'s Posts:</h3>
+  <% @posts.each do |post| %>
+    <ul>
+      <li><%= post.body %> - <%= post.created_at %></li>
+    </ul>
+  <% end %>
+<% end %>
+
 
 <h3><%= @user.username %>'s friends:</h3>
 <% @user.friends.each do |friend| %>
@@ -17,6 +26,9 @@
 <% end %>
 
 <% if current_user == @user %>
+  <h3>Add new Post:</h3>
+  <%= render "posts/post_form" %>
+  
   <h3>Pending friend requests:</h3>
     <h5>Sent:</h5>
       <% @user.sent_invite_to.each do |almost_friend| %>
