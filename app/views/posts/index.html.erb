@@ -1,1 +1,12 @@
 <h1>Timeline</h1>
+
+<% @posts.each do |post| %>
+  <% user = User.find(post.user_id) %>
+  <ul>
+    <li><%= post.body %> - <%= link_to user.username, user_path(user) %></li>
+    <%= post.created_at %>
+  </ul>
+<% end %>
+
+<h3>Add new post:</h3>
+<%= render "post_form" %>
