@@ -58,3 +58,28 @@ Invitation.create!([{
   friend_id: User.find_by(username: "mike").id,
   confirmed: false
 }])
+
+Post.create!([{
+  user_id: User.find_by(username: "mike").id,
+  body: "Today is a great day!"
+},
+{
+  user_id: User.find_by(username: "logan").id,
+  body: "I am feeling good!"
+},
+{
+  user_id: User.find_by(username: "mike").id,
+  body: "I hope my team wins sport ball"
+},
+{
+  user_id: User.find_by(username: "kendall").id,
+  body: "Hello world"
+},
+{
+  user_id: User.find_by(username: "logan").id,
+  body: "Feeling down today"
+},
+{
+  user_id: User.find_by(username: "shiv").id,
+  body: "Mike shouldnt see this"
+}])
