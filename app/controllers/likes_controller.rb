@@ -12,11 +12,6 @@ class LikesController < ApplicationController
     redirect_to user_posts_path(current_user)
   end
 
-  def show
-    @post = Post.find(params[:post_id])
-    @like = @post.likes.find_by(like_params)
-  end
-
   private
 
   def like_params
