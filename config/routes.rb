@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :invitations
     resources :notifications
-    resources :posts
+    resources :posts, only: [:index, :create]
+  end
+
+  resources :posts do 
+    resources :likes
   end
 end
