@@ -2,6 +2,7 @@ class LikesController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
     @like = @post.likes.create(like_params)
+    redirect_to user_posts_path(current_user)
   end
 
   def destroy
@@ -13,6 +14,6 @@ class LikesController < ApplicationController
   private
 
   def like_params
-    params.require(:likes).permit(:user_id, :post_id)
+    params.require(:like).permit(:user_id, :post_id)
   end
 end
