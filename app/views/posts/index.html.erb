@@ -4,7 +4,8 @@
   <% user = User.find(post.user_id) %>
   <ul>
     <li><%= post.body %> - <%= link_to user.username, user_path(user) %></li>
-    <%= post.created_at %>
+    <%= post.created_at %><br>
+    <%= post.likes.count %> - likes
   </ul>
 <% end %>
 
