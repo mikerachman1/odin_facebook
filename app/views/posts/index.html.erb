@@ -1,6 +1,7 @@
 <h1>Timeline</h1>
 
-<% @posts.each do |post| %>
+<% @posts.each do | post | %>
+  <% @post = post %>
   <% user = User.find(post.user_id) %>
   <ul>
     <li><%= post.body %> - <%= link_to user.username, user_path(user) %></li>
@@ -12,6 +13,13 @@
     <% else %>
       <%= link_to 'Like', new_post_like_path(post, like: { user_id: current_user.id, post_id: post.id }) %>
     <% end %>
+    <ul>
+      <% post.comments.each do |comment| %>
+        <li><%= comment.body %> - <%= User.find(comment.user_id).username %></li>
+      <% end %>
+    </ul>
+    <p>Add Comment:</p>
+    <%= render 'comment_form' %>
   </ul>
 <% end %>
 
