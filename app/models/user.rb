@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes
   has_many :comments
+  has_one :profile
 
   def friends
     friends_i_sent_invitation = Invitation.where(user_id: id, confirmed: true).pluck(:friend_id)
