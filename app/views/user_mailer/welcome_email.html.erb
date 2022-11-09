@@ -9,7 +9,7 @@
 <body>
   <h1>Welcome <%= @user.username %>!</h1>
   <p>You have successfully signed up for an account!</p>
-  <p>To login, just follow this link: <%= @url %></p>
+  <p>To login, just follow this link: <a href="<%= @url %>"><%= @url %></a></p>
   <p>Thanks for joining and have a great day!</p>
 </body>
 </html>
