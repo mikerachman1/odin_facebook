@@ -12,11 +12,6 @@ class CommentsController < ApplicationController
     redirect_to user_posts_path(current_user)
   end
 
-  def show
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
-  end
-
   private
 
   def comment_params
