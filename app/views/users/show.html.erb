@@ -11,7 +11,11 @@
   <% end %>
   <% if !@user.profile.nil? %>
     <% profile = @user.profile %>
-    <%= image_tag(profile.picture, size: "150") %>
+    <% if profile.avatar.attached? %>
+      <%= image_tag(profile.avatar, size: "150") %>
+    <% else %>
+      <%= image_tag(profile.picture, size: "150") %>
+    <% end %>
     <ul>
       <li>Name: <%= profile.name %></li>
       <li>Age: <%= profile.age %></li>

@@ -8,8 +8,11 @@
   <%= form.label :location %>
   <%= form.text_field :location %>
 
-  <%= form.label :picture, "Url of Photo:" %>
+  <%= form.label :picture, "Url of Profile Photo:" %>
   <%= form.text_field :picture, value: current_user.avatar_url %>
+
+  <%= form.label :avatar, "Or Upload Profile Photo here:" %>
+  <%= form.file_field :avatar %>
 
   <%= form.submit %>
 <% end %>
