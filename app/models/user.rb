@@ -14,6 +14,15 @@ class User < ApplicationRecord
   has_many :comments
   has_one :profile, dependent: :destroy
 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.full_name = auth.info.name # assuming the user model has a name
+      user.avatar_url = auth.info.image # assuming the user model has an image
+    end
+  end
+
   def friends
     friends_i_sent_invitation = Invitation.where(user_id: id, confirmed: true).pluck(:friend_id)
     friends_i_got_invitation = Invitation.where(friend_id: id, confirmed: true).pluck(:user_id)
