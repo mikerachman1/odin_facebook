@@ -1,0 +1,23 @@
+<% if user == current_user || current_user.friend_with?(user) %>
+  <h3><%= user.username %>'s Posts:</h3>
+  <% posts.each do |post| %>
+    <% @post = post %>
+    <ul>
+      <li><%= post.body %></li>
+      <%= post.created_at %><br>
+      <%= post.likes.count %> - likes <br>
+      <% like = post.find_like(current_user) %>
+    <% if post.liked_by?(current_user) %>
+      <%= link_to 'Un-like', post_like_path(post, like, like: { user_id: current_user.id, post_id: post.id }), data: { turbo_method: :delete } %>
+    <% else %>
+      <%= link_to 'Like', new_post_like_path(post, like: { user_id: current_user.id, post_id: post.id }) %>
+    <% end %>
+    </ul>
+    <ul>
+      <%= render 'post_comments' %>
+    </ul>
+    <p>Add Comment:</p>
+    <%= render 'posts/comment_form' %>
+  </ul>
+  <% end %>
+<% end %>

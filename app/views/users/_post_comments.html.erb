@@ -1,0 +1,6 @@
+<% @post.comments.each do |comment| %>
+  <li><%= comment.body %> - <%= User.find(comment.user_id).username %></li>
+  <% if current_user == User.find(comment.user_id) %>
+    <%= link_to 'Delete Comment', [comment.post, comment], data: { turbo_method: :delete } %>
+  <% end %>
+<% end %>
