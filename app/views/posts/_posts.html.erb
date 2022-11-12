@@ -1,6 +1,5 @@
-<% if user == current_user || current_user.friend_with?(user) %>
-  <h3><%= user.username %>'s Posts:</h3>
-  <% posts.each do |post| %>
+
+  <% @posts.each do |post| %>
     <% @post = post %>
     <ul>
       <li><%= post.body %></li>
@@ -12,12 +11,10 @@
     <% else %>
       <%= link_to 'Like', new_post_like_path(post, like: { user_id: current_user.id, post_id: post.id }) %>
     <% end %>
+      <ul>
+        <%= render 'posts/post_comments' %>
+        <p>Add Comment:</p>
+        <%= render 'posts/comment_form' %>
+      </ul>
     </ul>
-    <ul>
-      <%= render 'post_comments' %>
-    </ul>
-    <p>Add Comment:</p>
-    <%= render 'posts/comment_form' %>
-  </ul>
   <% end %>
-<% end %>
