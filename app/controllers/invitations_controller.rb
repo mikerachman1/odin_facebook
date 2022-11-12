@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
     user.send_invitation(new_friend)
     flash.alert = 'Friend request sent'
     new_friend.send_notification("Friend request recieved from #{user.username}!")
-    redirect_to users_path
+    redirect_back(fallback_location: users_path)
   end
 
   def edit
@@ -14,14 +14,14 @@ class InvitationsController < ApplicationController
     invitation.update(confirmed: true)
     flash.alert = 'Friend request Accepted'
     sender = User.find(invitation.user_id)
-    sender.send_notification("#{user.username} accepted your friend request!")
-    redirect_to user_path(user)
+    sender.send_notification("#{user.username} accepted your friend")
+    redirect_back(fallback_location: users_path)
   end
 
   def destroy
     user = User.find(params[:user_id])
     invitation = Invitation.find(params[:id])
     invitation.destroy
-    redirect_to user_path(user), status: 303
+    redirect_back(fallback_location: users_path)
   end
 end
