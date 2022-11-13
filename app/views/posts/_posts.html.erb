@@ -2,6 +2,9 @@
   <% @posts.each do |post| %>
     <% @post = post %>
     <ul>
+      <% unless post.post_picture.blank? %>
+        <%= image_tag(post.post_picture, size: "300") %>
+      <% end %>
       <li><%= post.body %></li>
       <%= post.created_at %><br>
       <%= post.likes.count %> - likes <br>
