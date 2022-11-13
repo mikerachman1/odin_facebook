@@ -6,12 +6,12 @@ class User < ApplicationRecord
          #for google Omniauth
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
   has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: "friend_id"
-  has_many :notifications
-  has_many :posts
-  has_many :likes
-  has_many :comments
+  has_many :notifications, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one :profile, dependent: :destroy
 
   def self.from_omniauth(auth)

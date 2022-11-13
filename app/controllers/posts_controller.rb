@@ -17,6 +17,12 @@ class PostsController < ApplicationController
     redirect_back(fallback_location: user_posts_path(@user))
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_back(fallback_location: users_path)
+  end
+
   private
 
   def post_params

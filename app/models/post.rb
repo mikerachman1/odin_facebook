@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :likes
-  has_many :comments
-  has_one_attached :post_picture
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_one_attached :post_picture, dependent: :destroy
 
   def liked_by?(user)
     likes.any? { |like| like.user == user }
