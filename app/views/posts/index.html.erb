@@ -1,6 +1,10 @@
 <h1>Timeline</h1>
 
-<%= render 'posts' %>
+<div data-controller="visibility">
+  <button data-action="visibility#toggleTargets">New Post</button>
+  <div data-visibility-target="hideable" hidden>
+    <%= render "post_form" %>
+  </div>
+</div>
 
-<h3>Add new post:</h3>
-<%= render "post_form" %>
+<%= render 'posts' %>

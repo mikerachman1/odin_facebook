@@ -1,4 +1,4 @@
-
+<div>
   <% @posts.each do |post| %>
     <% @post = post %>
     <ul>
@@ -10,7 +10,7 @@
       <br>
       <%= post.created_at %>
       <br>
-      <%= post.likes.count %> - likes 
+      <%= post.likes.count %> - likes
       <br>
       <% if current_user.id == post.user_id %>
         <%= link_to 'Delete Post', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
@@ -22,10 +22,10 @@
     <% else %>
       <%= link_to 'Like', new_post_like_path(post, like: { user_id: current_user.id, post_id: post.id }) %>
     <% end %>
+    <br>
       <ul>
         <%= render 'posts/post_comments' %>
-        <p>Add Comment:</p>
-        <%= render 'posts/comment_form' %>
       </ul>
     </ul>
   <% end %>
+</div>

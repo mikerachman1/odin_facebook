@@ -10,8 +10,12 @@
 
 <%# add new post %>
 <% if current_user == @user %>
-  <h3>Add new Post:</h3>
-  <%= render "posts/post_form" %>
+  <div data-controller="visibility">
+    <button data-action="visibility#toggleTargets">New Post</button>
+    <div data-visibility-target="hideable" hidden>
+      <%= render "posts/post_form" %>
+    </div>
+  </div>
 <% end %>
 
 <%# posts %>
