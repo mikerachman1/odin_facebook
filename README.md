@@ -1,9 +1,10 @@
-# README
+# Rails Facebook Clone
 
-visit-app: https://odin-facebook.fly.dev/
+A facebook clone built using Ruby on Rails
 
-This is a facebook clone built with Ruby on Rails. 
+[👉 Live demo 👈](https://odin-facebook.fly.dev/)
 
+## Functionality
 It was created to replicate all of the core functionality of Facebook including:
   - Profiles
   - Friends 
@@ -12,9 +13,17 @@ It was created to replicate all of the core functionality of Facebook including:
   - Image uploads
   - Notifications
 
-This project also utilizes action mailer, Google omini auth login, devise, and Turbo. 
+This project also utilizes:
+  - Action Mailer
+  - Google omini auth login 
+  - Devise
+  - Turbo 
 
-The app is styled with simplecss: https://simplecss.org/
+  
+## Screenshot
+![screenshot](/app/assets/images/screenshot.png?raw=true)
 
-https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
+## Notes
+  - The app is styled with [simplecss](https://simplecss.org/)
+  - This was built as part of the Odin Project curriculum. [Project description](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project)
 
